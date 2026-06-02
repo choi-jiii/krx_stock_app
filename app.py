@@ -12,7 +12,10 @@ from repository import init_db, add_favorite, get_favorites, delete_favorite
 load_dotenv()
 init_db()
 
-AUTH_KEY = os.getenv("KRX_AUTH_KEY")
+try:
+    AUTH_KEY = st.secrets["KRX_AUTH_KEY"]
+except Exception:
+    AUTH_KEY = os.getenv("KRX_AUTH_KEY")
 
 
 def get_krx_daily_data(bas_dd):
